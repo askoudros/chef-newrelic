@@ -97,8 +97,7 @@ service "newrelic-daemon" do
  action [ :enable, :restart ]
 end
 
-execute "run-newrelic-daemon" do
-  command "/etc/init.d/newrelic-daemon restart"
-  action :run
+service "newrelic-daemon" do
+  action :restart
 end
 
