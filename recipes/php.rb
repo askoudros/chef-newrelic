@@ -46,7 +46,6 @@ bash "newrelic-installer" do
   code <<-EOH
 #!/bin/sh
 export NR_INSTALL_SILENT=true
-echo "newrelic::php line 49 executing /usr/bin/newrelic-install in install mode" >> /var/log/install 2>&1
 /usr/bin/newrelic-install "install"
 EOH
   notifies :run, resources(:execute => "run_newrelic-installer")

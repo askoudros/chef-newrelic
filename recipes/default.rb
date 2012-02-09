@@ -18,6 +18,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+execute "get_gpg_key" do
+  command "wget -O - http://download.newrelic.com/548C16BF.gpg | apt-key add -"
+  action :run
+end
+
 require_recipe "apt"
 
 apt_repository "newrelic" do
