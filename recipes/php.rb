@@ -33,10 +33,9 @@ directory '/etc/newrelic' do
 end
 
 execute "run_newrelic-installer" do
-  command "chmod +x /tmp/newrelic-installer;/tmp/newrelic-installer;touch /opt/skystack/tmp/executed-newrelic-installer;"
+  command "chmod +x /tmp/newrelic-installer;/tmp/newrelic-installer;touch /tmp/executed-newrelic-installer;"
   action :nothing
- 
-  only_if do ! File.exists?( "/opt/skystack/tmp/executed-newrelic-installer" ) end
+  only_if do ! File.exists?( "/tmp/executed-newrelic-installer" ) end
 end
 
 bash "newrelic-installer" do
@@ -96,8 +95,3 @@ end
 service "newrelic-daemon" do
  action [ :enable, :restart ]
 end
-
-service "newrelic-daemon" do
-  action :restart
-end
-
